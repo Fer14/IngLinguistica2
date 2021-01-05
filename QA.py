@@ -2,21 +2,20 @@
 
 
 
-
-print("Haz tu pregunta")
+print("Haz tu pregunta. Para acabar escribe SALIR")
 
 query = input()
 
-Respuesta = ""
-
-if  query.find("hola") != -1:
-    Respuesta = "¿Que tal?"
+while query != "SALIR":
 
 
+    Respuesta = ""
 
+    if  query.find("hola") != -1:
+        Respuesta = "¿Que tal?"
 
+    print (Respuesta)
 
+    print("Haz tu pregunta. Para acabar escribe SALIR")
 
-
-
-print (Respuesta)
+    query = input()

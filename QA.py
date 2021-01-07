@@ -16,6 +16,21 @@ Valor["utensilios"] = ["un batidor de mano","una sartén","un recipiente para la
 Valor["acompañamiento"] = ["vainilla","vanela","ralladura de citricos"]
 
 
+
+Valor["fecha"] = {"nacimiento":"412 a.C","muerte":"323 a.C"}
+Valor["lugar"] = {"nacimiento": "Synope","muerte":"Corinto","vida":"las calles de Atenas"}
+Valor["nombre"] = {"diogenes":"Diógenes de Synope o Diógenes el Cinico" ,"padre":"Hicesias","maestro":"Antístenes el más antiguo pupilo de Sócrates"}
+Valor["ocupacion"] = "Banquero"
+Valor["filosofia de vida"] = "Renunciar por todas partes lo convencional y oponer a ello su naturaleza"
+Valor["pertenencias"] = "un manto, un zurrón, un báculo y un cuenco"
+Valor["mision"] = "de metafóricamente falsificar/desfigurar la “moneda” de las costumbres"
+Valor["costumbres"] = "la falsa moneda de la moralidad"
+Valor["exilio"] = {"razon":"desterrados por haber fabricado moneda falsa","lugar": "exiliado de su ciudad natal Synope"}
+Valor["conocidos"] = "Alejandro Magno y Platón"
+Valor["muerte"] = "murió de un cólico provocado por la ingestión de un pulpo vivo o murió al caerse de un caballo o haberle mordido un tendón uno de los perros entre los que trataba de repartir un pulpo o murió por su propia voluntad, reteniendo la respiración"
+Valor["ultimas palabras"] = "Cuando me muera, echadme a los perros. Ya estoy acostumbrado"
+
+
 print("Haz tu pregunta. Para acabar escribe SALIR")
 print("\n")
 query = input().lower()
@@ -97,57 +112,56 @@ while query != "salir":
 
     elif ((query.find("cuando")!= -1) or (query.find("fecha")!= -1)) and (query.find("diogenes")!=-1):
     	if ((query.find("nacio")!= -1) or (query.find("nacimiento")!= -1)):
-    		Respuesta ="412 a.C"
+    		Respuesta = Valor["fecha"]["nacimiento"]
     	elif ((query.find("murio")!= -1) or (query.find("defuncion")!= -1)):
-    		Respuesta ="412 a.C"
+    		Respuesta = Valor["fecha"]["muerte"]
 
 
     elif ((query.find("donde")!= -1) or (query.find("lugar")!= -1)) and (query.find("diogenes")!=-1):
     	if ((query.find("nacio")!= -1) or (query.find("nacimiento")!= -1)):
-    		Respuesta ="Synope"
+    		Respuesta = Valor["lugar"]["nacimiento"]
     	elif ((query.find("murio")!= -1) or (query.find("defuncion")!= -1)):
-    		Respuesta ="Corinto"
+    		Respuesta = Valor["lugar"]["muerte"]
     	elif ((query.find("vivio")!= -1) or (query.find("vida")!= -1)):
-    		Respuesta ="Las calles de Atenas"
+    		Respuesta = Valor["lugar"]["vida"]
 
     elif ((query.find("cuales")!= -1) or (query.find("como")!= -1)) and ((query.find("nombres")!= -1) or (query.find("llama")!= -1)):
     	if (query.find("diogenes")!= -1):
-    		Respuesta ="“Diógenes de Synope o Diógenes el Cinico”"
+    		Respuesta = Valor["lugar"]["diogenes"]
     	elif query.find("padre")!= -1:
-    		Respuesta = "Hicesias"
+    		Respuesta = Valor["lugar"]["padre"]
     	elif query.find("maestro")!= -1:
-    		Respuesta = "Antístenes el más antiguo pupilo de Sócrates"
+    		Respuesta = Valor["lugar"]["maestro"]
 
     elif ((query.find("trabajo") != -1) or (query.find("acupacion")!= -1)) and (query.find("padre") != -1):
-        Respuesta = "Banquero"
+        Respuesta = Valor["ocupacion"]
 
     elif  (query.find("cual") != -1) and (query.find("filosofia de vida")!= -1):
-    	Respuesta = "renunciar por todas partes lo convencional y oponer a ello su naturaleza"
+    	Respuesta = Valor["filosofia de vida"]
 
-    elif ((query.find("tenido") != -1) or (query.find("viviendo")!= -1)) and (query.find("qué") != -1):
-        Respuesta = "un manto, un zurrón, un báculo y un cuenco"
+    elif ((query.find("tenido") != -1) or (query.find("viviendo")!= -1)) and (query.find("qué") != -1) or (query.find("pertenencias") != -1):
+        Respuesta =Valor["filosofia de vida"]
 
     elif ((query.find("cual")!= -1) or (query.find("que")!= -1)) and ((query.find("mision")!= -1) or (query.find("hecho")!= -1)) and (query.find("Atenas") != -1):
-        Respuesta = "de metafóricamente falsificar/desfigurar la “moneda” de las costumbres"
+        Respuesta = Valor["mision"] 
 
     elif ((query.find("definicion") != -1) and (query.find("costumbre")!= -1)):
-        Respuesta = "la falsa moneda de la moralidad"
+        Respuesta = Valor["costumbres"]
 
-    elif (query.find("exilio")!=-1):
+    elif (query.find("exilio")!=-1) or (query.find("exiliado")!=-1):
         if (query.find("por que")!= -1) or (query.find("razon")!=-1):
-            Respuesta = "desterrados por haber fabricado moneda falsa"
+            Respuesta = Valor["exilio"]["razon"]
         elif query.find("de donde")!=-1:
-            Respuesta="exiliado de su ciudad natal Synope"
+            Respuesta = Valor["exilio"]["lugar"]
 
     elif ((query.find("a quien") != -1) or (query.find("cual fue")!= -1)) and ((query.find("conocia") != -1) or (query.find("conocidas") != -1)):
-        Respuesta = "Alejandro Magno y Platón"
+        Respuesta = Valor["conocidos"]
 
     elif ((query.find("como") != -1) or (query.find("manera")!= -1)) and (query.find("murio") != -1) and (query.find("diogenes") != -1):
-        Respuesta = "murió de un cólico provocado por la ingestión de un pulpo vivo o murió al caerse de un caballo o haberle mordido un tendón uno de los perros entre los que trataba de repartir un pulpo o murió por su propia voluntad, reteniendo la respiración"
+        Respuesta = Valor["muerte"]
 
     elif (query.find("cuales") != -1) and (query.find("ultimas palabres")!= -1) and (query.find("diogenes")!= -1) :
-        Respuesta = "Cuando me muera, echadme a los perros. Ya estoy acostumbrado"
-
+        Respuesta = Valor["ultimas palabras"]
 
 
 

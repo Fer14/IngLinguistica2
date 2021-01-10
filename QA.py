@@ -48,10 +48,10 @@ while query != "salir":
 
     Respuesta = ""
 
+   
 
     if ((query.find("cuales") != -1) or (query.find("que")!= -1)) and (query.find("ingredientes")!= -1):
         Respuesta = Valor["ingredientes"]
-
 
     elif ((query.find("cuant") != -1) or (query.find("cantidad")!= -1)) and (any(ingredients in query for ingredients in Ingredientes)):   
 
@@ -136,33 +136,35 @@ while query != "salir":
     elif ((query.find("utensilios") != -1)):
         Respuesta = Valor["utensilios"] 
 
-    elif ((query.find("acompañamientos") != -1) or (query.find("añadir")!= -1)):
-        Valor["acompañamiento"]
+    elif(query.find("acompañamientos")!= -1) or (query.find("añadir")!= -1 and query.find("receta")!= -1 ):
+        Respuesta = Valor["acompañamiento"]   
+
+        
 
 ######################################BIOGRAFIA################################################        
 
     elif ((query.find("cuando")!= -1) or (query.find("fecha")!= -1)) and (query.find("diogenes")!=-1):
     	if ((query.find("nacio")!= -1) or (query.find("nacimiento")!= -1)):
     		Respuesta = Valor["fecha"]["nacimiento"]
-    	elif ((query.find("murio")!= -1) or (query.find("defuncion")!= -1)):
+    	elif ((query.find("murio")!= -1) or (query.find("muerte")!= -1)):
     		Respuesta = Valor["fecha"]["muerte"]
 
 
     elif ((query.find("donde")!= -1) or (query.find("lugar")!= -1)) and (query.find("diogenes")!=-1):
     	if ((query.find("nacio")!= -1) or (query.find("nacimiento")!= -1)):
     		Respuesta = Valor["lugar"]["nacimiento"]
-    	elif ((query.find("murio")!= -1) or (query.find("defuncion")!= -1)):
+    	elif ((query.find("murio")!= -1) or (query.find("muerte")!= -1)):
     		Respuesta = Valor["lugar"]["muerte"]
     	elif ((query.find("vivio")!= -1) or (query.find("vida")!= -1)):
     		Respuesta = Valor["lugar"]["vida"]
 
     elif ((query.find("cuales")!= -1) or (query.find("como")!= -1)) and ((query.find("nombres")!= -1) or (query.find("llama")!= -1)):
     	if (query.find("diogenes")!= -1):
-    		Respuesta = Valor["lugar"]["diogenes"]
+    		Respuesta = Valor["nombre"]["diogenes"]
     	elif query.find("padre")!= -1:
-    		Respuesta = Valor["lugar"]["padre"]
+    		Respuesta = Valor["nombre"]["padre"]
     	elif query.find("maestro")!= -1:
-    		Respuesta = Valor["lugar"]["maestro"]
+    		Respuesta = Valor["nombre"]["maestro"]
 
     elif ((query.find("trabajo") != -1) or (query.find("acupacion")!= -1)) and (query.find("padre") != -1):
         Respuesta = Valor["ocupacion"]
@@ -171,9 +173,9 @@ while query != "salir":
     	Respuesta = Valor["filosofia de vida"]
 
     elif ((query.find("tenido") != -1) or (query.find("viviendo")!= -1)) and (query.find("qué") != -1) or (query.find("pertenencias") != -1):
-        Respuesta =Valor["filosofia de vida"]
+        Respuesta =Valor["pertenencias"]
 
-    elif ((query.find("cual")!= -1) or (query.find("que")!= -1)) and ((query.find("mision")!= -1) or (query.find("hecho")!= -1)) and (query.find("Atenas") != -1):
+    elif ((query.find("cual")!= -1) or (query.find("que")!= -1)) and (query.find("mision")!= -1)  and (query.find("Atenas") != -1):
         Respuesta = Valor["mision"] 
 
     elif ((query.find("definicion") != -1) and (query.find("costumbre")!= -1)):

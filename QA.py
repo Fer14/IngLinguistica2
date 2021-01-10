@@ -1,7 +1,7 @@
 
+import json
 
-
-
+'''
 Ingredientes = ["huevos","mantequilla","leche","harina","azucar","sal"]
 Valor = {}
 Valor["ingredientes"] = Ingredientes
@@ -29,10 +29,17 @@ Valor["exilio"] = {"razon":"desterrados por haber fabricado moneda falsa","lugar
 Valor["conocidos"] = "Alejandro Magno y Platón"
 Valor["muerte"] = "murió de un cólico provocado por la ingestión de un pulpo vivo o murió al caerse de un caballo o haberle mordido un tendón uno de los perros entre los que trataba de repartir un pulpo o murió por su propia voluntad, reteniendo la respiración"
 Valor["ultimas palabras"] = "Cuando me muera, echadme a los perros. Ya estoy acostumbrado"
+'''
+
+with open('./DATA.json',encoding='utf-8') as f:
+  Valor = json.load(f)
+
+Ingredientes = Valor["ingredientes"]
 
 
 print("Haz tu pregunta. Para acabar escribe SALIR")
 print("\n")
+print("Q:")
 query = input().lower()
 
 
@@ -41,11 +48,12 @@ while query != "salir":
 
     Respuesta = ""
 
+
     if ((query.find("cuales") != -1) or (query.find("que")!= -1)) and (query.find("ingredientes")!= -1):
         Respuesta = Valor["ingredientes"]
 
 
-    elif ((query.find("cuanta") != -1) or (query.find("cuantas") != -1) or (query.find("cuantos") != -1) or (query.find("cuanto") != -1)or (query.find("cantidad")!= -1)) and (any(ingredients in query for ingredients in Ingredientes)):   
+    elif ((query.find("cuant") != -1) or (query.find("cantidad")!= -1)) and (any(ingredients in query for ingredients in Ingredientes)):   
 
         if (query.find("huevos")!= -1):
             Respuesta = Valor["cantidad"]["huevos"]
@@ -86,18 +94,41 @@ while query != "salir":
     elif (query.find("que") != -1) and ((query.find("hacer")) or (query.find("hace")!= -1)) and (any(ingredients in query for ingredients in Ingredientes)): 
 
         if (query.find("huevos")!= -1):
-            Respuesta = "preparacion" 
+            Respuesta = Valor["preparacion"][0]
         if (query.find("mantequilla")!= -1):
-            Respuesta = "preparacion" 
+            Respuesta =  Valor["preparacion"][3] 
         if (query.find("leche")!= -1):
-            Respuesta = "preparacion" 
+            Respuesta =  Valor["preparacion"][2]  
         if (query.find("harina")!= -1):
-            Respuesta = "preparacion" 
+            Respuesta = Valor["preparacion"][1]   
         if (query.find("azucar")!= -1):
-            Respuesta = "preparacion" 
+            Respuesta = Valor["preparacion"][0] 
         if (query.find("sal")!= -1):
-            Respuesta = "preparacion" 
-            
+            Respuesta = Valor["preparacion"][1]  
+
+    elif ((query.find("que") != -1 or query.find("cual") != -1)) and (query.find("primer") != -1):
+        Respuesta = Valor["preparacion"][0]
+
+    elif ((query.find("que") != -1 or query.find("cual") != -1)) and (query.find("segundo") != -1 ):
+        Respuesta = Valor["preparacion"][1]
+
+    elif ((query.find("que") != -1 or query.find("cual") != -1)) and (query.find("tercero") != -1):
+        Respuesta = Valor["preparacion"][2]      
+
+    elif ((query.find("que") != -1 or query.find("cual") != -1)) and (query.find("cuarto") != -1 ):
+        Respuesta = Valor["preparacion"][3] 
+
+    elif ((query.find("que") != -1 or query.find("cual") != -1)) and (query.find("quinto") != -1 ):
+        Respuesta = Valor["preparacion"][4]         
+
+    elif ((query.find("que") != -1 or query.find("cual") != -1)) and (query.find("sexto") != -1 ):
+        Respuesta = Valor["preparacion"][5]
+
+    elif ((query.find("que") != -1 or query.find("cual") != -1)) and (query.find("septimo") != -1 ):
+        Respuesta = Valor["preparacion"][6] 
+
+    elif ((query.find("que") != -1 or query.find("cual") != -1)) and (query.find("octavo") != -1 or query.find("ultimo") != -1 or query.find("final") != -1 ):
+        Respuesta = Valor["preparacion"][7]
 
     elif ((query.find("consejos") != -1) or (query.find("recomiendas")!= -1)):
         Respuesta = Valor["consejos"]        
@@ -164,6 +195,7 @@ while query != "salir":
         Respuesta = Valor["ultimas palabras"]
 
 
+    print("A:")
 
     if type(Respuesta) is list:
         for i in range(len(Respuesta)-1):
@@ -171,11 +203,16 @@ while query != "salir":
 
         print("y")
         print(Respuesta[-1])    
+    
+    elif Respuesta == "":
+        print("Lo sentimos,no se ha podido obtener una respuesta para esta pregunta.")
+    
     else:
         print(Respuesta)
 
     print("\n")
-    print("Haz tu pregunta. Para acabar escribe SALIR")
+    print("Haz tu pregunta. Para acabar escribe <<salir>>")
+    print("Q:")
 
     query = input().lower()
     
